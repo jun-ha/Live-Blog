@@ -55,6 +55,7 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script_stop: true
           script: |
+            APP_NAME=${{ env.APP_NAME }}
             docker stop $APP_NAME || true
             docker rm $APP_NAME || true
             docker pull ${{ steps.login-ecr.outputs.registry }}/$APP_NAME:latest
