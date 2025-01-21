@@ -56,7 +56,7 @@ jobs:
           script_stop: true
           script: |
             APP_NAME=${{ env.APP_NAME }}
-            docker stop $APP_NAME || true
-            docker rm $APP_NAME || true
-            docker pull ${{ steps.login-ecr.outputs.registry }}/$APP_NAME:latest
-            docker run -d --name $APP_NAME -p 80:8080 ${{ steps.login-ecr.outputs.registry }}/$APP_NAME:latest
+            docker stop liveblog-server || true
+            docker rm liveblog-server || true
+            docker pull ${{ steps.login-ecr.outputs.registry }}/liveblog-server:latest
+            docker run -d --name $APP_NAME -p 80:8080 ${{ steps.login-ecr.outputs.registry }}/liveblog-server:latest
